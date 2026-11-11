@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="AntiSweetTooth by Pinklao — custom grillz and tooth gem studio in Nonthaburi. Book an appointment online.">
+<meta name="theme-color" content="#04060c">
+<title>AntiSweetTooth</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;900&family=Prompt:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: single scrolling page. Black cyber grid hero with chrome type, then white "catalog" cards (clean, same-style product art), navy process band, booking form. */
+:root {
+  --ink: #04060c;
+  --navy: #0a1750;
+  --blue: #2f6bff;
+  --ice: #b9d0ff;
+  --silver: #cdd5e3;
+  --white: #f7f9fd;
+  --muted: #8d9ab5;
+  --line: #1c2a5c;
+  --card: #ffffff;
+  --card-ink: #0b1230;
+  --card-muted: #5b6684;
+  --ok: #38d39f;
+  --warn: #ffb547;
+  --chrome: linear-gradient(180deg, #ffffff 0%, #d7deeb 30%, #6c7b98 49%, #eef3fb 58%, #9fb0cc 100%);
+  --f-display: 'Unbounded', 'Prompt', system-ui, sans-serif;
+  --f-body: 'Prompt', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--ink); color: var(--white);
+  font-family: var(--f-body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 48px;
+  overflow-x: hidden;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--ink); }
+.wrap { max-width: 1080px; margin: 0 auto; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.1; }
+.chrome { background: var(--chrome); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+.mono { font-family: var(--f-mono); letter-spacing: .08em; text-transform: uppercase; font-size: 12px; }
+
+/* header */
+header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; margin: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding: 10px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px)); background: rgba(4,6,12,.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.bar { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; gap: 12px; }
+.logo { font-family: var(--f-display); font-weight: 900; font-size: 15px; letter-spacing: .02em; text-decoration: none; flex: 1; min-width: 0; white-space: nowrap; }
+.nav { display: none; gap: 20px; font-size: 14px; }
+.nav a { text-decoration: none; color: var(--silver); }
+.nav a:hover { color: #fff; }
+.lang { display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.lang button { background: none; border: 0; color: var(--muted); padding: 6px 12px; font: 600 12px var(--f-mono); cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--blue); color: #fff; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; cursor: pointer; text-decoration: none; font: 700 14px var(--f-body); padding: 12px 20px; border-radius: 999px; background: var(--blue); color: #fff; box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset, 0 8px 26px rgba(47,107,255,.35); transition: transform .15s; }
+.btn:hover { transform: translateY(-1px); }
+.btn.ghost { background: transparent; color: var(--white); box-shadow: 0 0 0 1px var(--silver) inset; }
+.btn.sm { padding: 8px 14px; font-size: 13px; }
+@media (min-width: 760px) { .nav { display: flex; } .logo { flex: 0 0 auto; } .bar { gap: 28px; } .bar .spacer { flex: 1; } }
+
+/* hero */
+.hero { position: relative; margin: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding: 44px max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px)); overflow: hidden;
+  background:
+    radial-gradient(60% 50% at 50% 0%, rgba(47,107,255,.35), transparent 70%),
+    linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 100% 36px,
+    linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 36px 100%,
+    var(--ink); }
+.hero::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px); pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; text-align: left; }
+.kicker { display: inline-block; border: 1px solid var(--blue); color: var(--ice); padding: 4px 10px; border-radius: 4px; }
+.hero h1 { font-weight: 900; font-size: clamp(34px, 10.2vw, 104px); letter-spacing: -.03em; margin: 18px 0 6px; word-break: break-word; filter: drop-shadow(0 4px 0 rgba(47,107,255,.5)); }
+.hero p.lead { color: var(--ice); font: 600 15px var(--f-display); letter-spacing: .3em; margin: 8px 0 26px; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-art { margin-top: 30px; width: 100%; max-width: 760px; display: block; }
+.spark { transform-box: fill-box; transform-origin: center; animation: tw 2.8s ease-in-out infinite; }
+.spark:nth-of-type(2n) { animation-delay: .9s; } .spark:nth-of-type(3n) { animation-delay: 1.7s; }
+@keyframes tw { 0%,100% { opacity: .25; transform: scale(.6) rotate(0); } 50% { opacity: 1; transform: scale(1.1) rotate(45deg); } }
+
+.ticker { margin: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))); overflow: hidden; background: var(--blue); color: #fff; border-block: 1px solid #7ea3ff; }
+.ticker div { display: inline-flex; white-space: nowrap; padding: 9px 0; animation: scroll 28s linear infinite; font-family: var(--f-display); font-weight: 600; font-size: 12px; letter-spacing: .08em; }
+.ticker span { padding: 0 18px; }
+@keyframes scroll { to { transform: translateX(-50%); } }
+
+/* facts */
+.facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin-top: 36px; }
+.fact { background: #070b1a; padding: 16px; min-width: 0; }
+.fact b { display: block; font-family: var(--f-display); font-size: 17px; line-height: 1.25; }
+.fact small { color: var(--muted); font-size: 13px; }
+.fact:last-child { grid-column: 1 / -1; }
+@media (min-width: 760px) { .facts { grid-template-columns: repeat(5, 1fr); } .fact:last-child { grid-column: auto; } }
+
+section { padding-top: 56px; }
+.sec-h { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.sec-h h2 { font-size: clamp(26px, 6vw, 44px); font-weight: 900; }
+.sec-h p { color: var(--silver); max-width: 60ch; margin: 0; }
+
+/* catalog */
+.tabs { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 4px; gap: 4px; margin-bottom: 20px; }
+.tabs button { border: 0; background: none; color: var(--silver); font: 700 14px var(--f-body); padding: 9px 18px; border-radius: 999px; cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--chrome); color: #0b1230; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (min-width: 760px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; } }
+.card { background: var(--card); color: var(--card-ink); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+.card .art { background: #fff; border-bottom: 1px solid #e6eaf3; aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center; padding: 10px; }
+.card .art svg { width: 100%; height: 100%; }
+.card .body { padding: 14px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.card h3 { font-size: 13px; letter-spacing: 0; font-weight: 600; line-height: 1.3; }
+.card .sub { color: var(--card-muted); font-size: 13px; line-height: 1.4; flex: 1; }
+.price { font-family: var(--f-display); font-weight: 900; font-size: 18px; margin-top: 6px; color: var(--navy); }
+.price small { font: 500 11px var(--f-mono); color: var(--card-muted); margin-right: 4px; text-transform: uppercase; }
+.card .btn { margin-top: 10px; background: var(--card-ink); box-shadow: none; padding: 10px; font-size: 13px; }
+.note { color: var(--muted); font-size: 13px; margin-top: 16px; }
+
+/* process */
+.band { margin: 72px calc(-1 * max(16px, env(safe-area-inset-left, 0px))) 0; padding: 0 max(16px, env(safe-area-inset-right, 0px)) 72px max(16px, env(safe-area-inset-left, 0px)); background: linear-gradient(180deg, var(--navy), #060d2e); border-block: 1px solid var(--line); }
+.band > .wrap > section:first-child { padding-top: 64px; }
+.steps { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 12px; }
+@media (min-width: 760px) { .steps { grid-template-columns: repeat(5, 1fr); } }
+.steps li { counter-increment: s; position: relative; border: 1px solid #28408f; border-radius: 12px; padding: 16px 14px 16px 14px; background: rgba(4,6,12,.4); }
+.steps li::before { content: counter(s); font: 900 28px var(--f-display); background: var(--chrome); -webkit-background-clip: text; background-clip: text; color: transparent; display: block; margin-bottom: 4px; }
+.steps b { display: block; margin-bottom: 2px; }
+.steps span { color: var(--ice); font-size: 14px; line-height: 1.45; display: block; }
+.two { display: grid; gap: 28px; }
+@media (min-width: 900px) { .two { grid-template-columns: 1fr 1fr; } }
+.pill { display: inline-block; font: 500 11px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; background: var(--blue); color: #fff; margin-bottom: 12px; }
+
+/* reviews */
+.empty { border: 1px dashed #34478f; border-radius: 14px; padding: 28px 20px; text-align: center; color: var(--silver); background: rgba(10,23,80,.25); }
+.empty b { display: block; font-family: var(--f-display); font-size: 18px; margin-bottom: 4px; }
+
+/* form */
+form { background: #070b1a; border: 1px solid var(--line); border-radius: 16px; padding: 18px; display: grid; gap: 16px; }
+@media (min-width: 760px) { form { padding: 28px; grid-template-columns: 1fr 1fr; } .full { grid-column: 1 / -1; } }
+.f { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+label, .lbl { font-size: 13px; color: var(--ice); font-weight: 500; }
+input[type=text], input[type=date], select, textarea { width: 100%; background: #0c1330; border: 1px solid #2b3f8a; color: #fff; padding: 12px; border-radius: 10px; font: 16px var(--f-body); min-width: 0; }
+textarea { min-height: 96px; resize: vertical; }
+input::placeholder, textarea::placeholder { color: #66749c; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg label { text-align: center; padding: 12px 8px; border: 1px solid #2b3f8a; border-radius: 10px; cursor: pointer; font-size: 15px; color: var(--white); font-weight: 700; }
+.seg input:checked + label { background: var(--blue); border-color: #8fb0ff; }
+.seg input:focus-visible + label { outline: 2px solid #fff; outline-offset: 2px; }
+.slots { display: flex; flex-wrap: wrap; gap: 8px; }
+.slots input { position: absolute; opacity: 0; pointer-events: none; }
+.slots label { border: 1px solid #2b3f8a; border-radius: 999px; padding: 8px 14px; cursor: pointer; font: 500 13px var(--f-mono); color: var(--white); }
+.slots input:checked + label { background: var(--silver); color: #0b1230; border-color: #fff; }
+.slots input:focus-visible + label { outline: 2px solid #fff; outline-offset: 2px; }
+.hint { color: var(--muted); font-size: 13px; }
+.err { color: var(--warn); font-size: 14px; min-height: 1.2em; }
+.done { border: 1px solid var(--ok); background: rgba(56,211,159,.08); border-radius: 14px; padding: 18px; display: grid; gap: 12px; }
+.done h3 { font-size: 18px; }
+.done.warn { border-color: var(--warn); background: rgba(255,181,71,.08); }
+.summary { white-space: pre-wrap; background: #04060c; border: 1px solid var(--line); border-radius: 10px; padding: 12px; font: 13px/1.6 var(--f-mono); overflow-x: auto; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* contact + footer */
+.contact { display: grid; gap: 12px; }
+@media (min-width: 760px) { .contact { grid-template-columns: repeat(3, 1fr); } }
+.cbox { border: 1px solid var(--line); border-radius: 12px; padding: 16px; background: #070b1a; min-width: 0; }
+.cbox b { display: block; font-family: var(--f-display); font-size: 14px; margin-bottom: 4px; }
+.cbox span, .cbox a { color: var(--silver); overflow-wrap: anywhere; }
+footer { margin-top: 56px; color: var(--muted); font-size: 13px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 18px; }
+
+/* owner inbox */
+.inbox { display: grid; gap: 10px; }
+.bk { border: 1px solid #2b3f8a; border-radius: 12px; padding: 14px; background: #070b1a; display: grid; gap: 8px; }
+.bk.contacted { opacity: .6; }
+.bk .summary { font-size: 12px; }
+
+/* cyber sigilism overrides: sharp chamfers, thorn ornaments, electric blue glow */
+.chrome { filter: drop-shadow(0 0 10px rgba(47,107,255,.45)); }
+.hero h1 { text-transform: uppercase; letter-spacing: -.02em; filter: drop-shadow(0 0 18px rgba(47,107,255,.7)); }
+.sigil { position: absolute; top: -10px; right: -40px; height: 118%; width: auto; aspect-ratio: 494 / 704; max-height: 640px; opacity: .42; pointer-events: none; z-index: 0; filter: drop-shadow(0 0 16px rgba(160,195,255,.55)); }
+@media (min-width: 900px) { .sigil { right: 6%; opacity: .85; } }
+.hero-art { filter: drop-shadow(0 0 14px rgba(47,107,255,.55)); }
+.divider { display: block; width: 100%; height: 44px; margin-bottom: 30px; filter: drop-shadow(0 0 8px rgba(160,195,255,.6)); }
+.btn { border-radius: 0; clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%); box-shadow: none; padding: 13px 28px; letter-spacing: .05em; text-transform: uppercase; font-size: 13px; }
+.btn.sm { padding: 9px 20px; font-size: 12px; }
+.btn.ghost { background: rgba(185,208,255,.16); color: #fff; box-shadow: none; }
+.lang, .tabs, .tabs button, .lang button, .kicker { border-radius: 0; }
+.tabs button[aria-selected="true"] { background: var(--chrome); }
+.card { border-radius: 0; clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px)); }
+.card .btn { clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%); }
+.facts, .steps li, .empty, form, .done, .bk, .cbox, .summary { border-radius: 0; }
+input[type=text], input[type=date], select, textarea { border-radius: 0; border-color: #2f4fc4; border-left: 3px solid var(--blue); }
+.seg label, .slots label { border-radius: 0; }
+.seg label { clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%); border: 0; background: #0c1330; }
+.seg input:checked + label { background: var(--blue); }
+.slots label { clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%); border: 0; background: #0c1330; padding: 9px 18px; }
+.slots input:checked + label { background: var(--silver); }
+form { border-color: #2f4fc4; box-shadow: 0 0 40px rgba(47,107,255,.12) inset; }
+.fact b { text-transform: uppercase; letter-spacing: .02em; font-size: 15px; }
+.sec-h h2 { text-transform: uppercase; letter-spacing: .01em; }
+
+.gI { display: inline-block; height: .78em; width: auto; overflow: visible; vertical-align: baseline; margin-left: .04em; -webkit-text-fill-color: initial; }
+.hero h1 .gI { filter: none; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .spark, .ticker div { animation: none; } .btn { transition: none; } }
+</style>
+<style>html{background:#04060c}body{margin:0}img,svg{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<header>
+  <div class="bar">
+    <a class="logo chrome" href="#top" aria-label="AntiSweetTooth">ANTISWEETTOOTH</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#styles" data-i18n="nav_styles"></a>
+      <a href="#process" data-i18n="nav_process"></a>
+      <a href="#reviews" data-i18n="nav_reviews"></a>
+      <a href="#contact" data-i18n="nav_contact"></a>
+    </nav>
+    <div class="spacer"></div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="th" aria-pressed="true">TH</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn sm" href="#book" data-i18n="nav_book"></a>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <svg class="sigil" id="sigil" viewBox="0 0 494 704" aria-hidden="true"></svg>
+  <div class="wrap">
+    <span class="kicker mono" data-i18n="kicker"></span>
+    <h1 class="chrome" aria-label="Anti Sweet Tooth"><span aria-hidden="true">ANT<svg class="gI" viewBox="0 0 44 120" aria-hidden="true"><defs><linearGradient id="gIa" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff"/><stop offset=".3" stop-color="#cfd9e8"/><stop offset=".55" stop-color="#05070c"/><stop offset=".8" stop-color="#8fa3bf"/><stop offset="1" stop-color="#fff"/></linearGradient><radialGradient id="gIf"><stop offset="0" stop-color="#fff"/><stop offset=".3" stop-color="#dbe7ff" stop-opacity=".7"/><stop offset="1" stop-color="#9ec0ff" stop-opacity="0"/></radialGradient></defs><path d="M22,0 C42,34 41,84 22,120 C3,84 2,34 22,0 Z" fill="url(#gIa)"/><path d="M22,6 C28,38 28,80 22,112" fill="none" stroke="#fff" stroke-width="1.4" opacity=".9"/><circle cx="22" cy="6" r="11" fill="url(#gIf)"/><path d="M22,-8 L23,5 L36,6 L23,7 L22,20 L21,7 L8,6 L21,5 Z" fill="#fff"/></svg><br>SWEET<br>TOOTH</span></h1>
+    <p class="lead" data-i18n="lead"></p>
+    <div class="cta">
+      <a class="btn" href="#book" data-i18n="cta_book"></a>
+      <a class="btn ghost" href="#styles" data-i18n="cta_styles"></a>
+    </div>
+    <svg class="hero-art" id="heroArt" viewBox="0 0 760 170" role="img" aria-label="Chrome grillz illustration"></svg>
+  </div>
+</div>
+<div class="ticker" aria-hidden="true"><div id="tick"></div></div>
+
+<div class="wrap">
+  <div class="facts">
+    <div class="fact"><b>฿3,000–16,000</b><small data-i18n="f_price"></small></div>
+    <div class="fact"><b>Tooth Gem</b><small data-i18n="f_gem"></small></div>
+    <div class="fact"><b>Grillz</b><small data-i18n="f_grillz"></small></div>
+    <div class="fact"><b data-i18n="f_warranty_b"></b><small data-i18n="f_warranty"></small></div>
+    <div class="fact"><b data-i18n="f_appt_b"></b><small data-i18n="f_appt"></small></div>
+  </div>
+
+  <section id="styles" data-sig>
+    <div class="sec-h">
+      <h2 class="chrome" data-i18n="h_styles"></h2>
+      <p data-i18n="p_styles"></p>
+    </div>
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" id="tab-grillz" aria-selected="true" data-tab="grillz">Grillz</button>
+      <button type="button" role="tab" id="tab-gem" aria-selected="false" data-tab="gem">Tooth Gem</button>
+    </div>
+    <div class="grid" id="grid" role="tabpanel"></div>
+    <p class="note" data-i18n="note_price"></p>
+  </section>
+</div>
+
+<div class="band">
+  <div class="wrap">
+    <section id="process">
+      <div class="sec-h">
+        <h2 class="chrome" data-i18n="h_process"></h2>
+        <p data-i18n="p_process"></p>
+      </div>
+      <div class="two">
+        <div>
+          <span class="pill">Grillz</span>
+          <ol class="steps" id="stepsGrillz" style="grid-template-columns:1fr"></ol>
+        </div>
+        <div>
+          <span class="pill">Tooth Gem</span>
+          <ol class="steps" id="stepsGem" style="grid-template-columns:1fr"></ol>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="reviews" data-sig>
+    <div class="sec-h"><h2 class="chrome" data-i18n="h_reviews"></h2></div>
+    <div class="empty"><b data-i18n="rev_b"></b><span data-i18n="rev_p"></span></div>
+  </section>
+
+  <section id="book" data-sig>
+    <div class="sec-h">
+      <h2 class="chrome" data-i18n="h_book"></h2>
+      <p data-i18n="p_book"></p>
+    </div>
+    <form id="form" novalidate>
+      <div class="f full">
+        <span class="lbl" data-i18n="l_service"></span>
+        <div class="seg" role="radiogroup">
+          <input type="radio" name="service" id="svc-grillz" value="grillz" checked><label for="svc-grillz">Grillz</label>
+          <input type="radio" name="service" id="svc-gem" value="gem"><label for="svc-gem">Tooth Gem</label>
+        </div>
+      </div>
+      <div class="f"><label for="style" data-i18n="l_style"></label><select id="style"></select></div>
+      <div class="f" id="metalWrap"><label for="metal" data-i18n="l_metal"></label>
+        <select id="metal"></select></div>
+      <div class="f" id="teethWrap" hidden><label for="gemtype" data-i18n="l_gemtype"></label>
+        <select id="gemtype"></select></div>
+      <div class="f"><label for="name" data-i18n="l_name"></label><input type="text" id="name" autocomplete="name" data-i18n-ph="ph_name"></div>
+      <div class="f"><label for="contact" data-i18n="l_contact"></label><input type="text" id="contact" autocomplete="off" data-i18n-ph="ph_contact"></div>
+      <div class="f"><label for="date" data-i18n="l_date"></label><input type="date" id="date"></div>
+      <div class="f">
+        <span class="lbl" data-i18n="l_time"></span>
+        <div class="slots" id="slots"></div>
+        <span class="hint" id="slotHint"></span>
+      </div>
+      <div class="f full"><label for="notes" data-i18n="l_notes"></label><textarea id="notes" data-i18n-ph="ph_notes"></textarea>
+        <span class="hint" data-i18n="h_notes"></span></div>
+      <div style="position:absolute;left:-9999px" aria-hidden="true"><label for="website">Website</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
+      <div class="f full">
+        <div class="err" id="err" role="alert"></div>
+        <button class="btn" type="submit" data-i18n="submit"></button>
+      </div>
+    </form>
+    <div id="result" aria-live="polite" style="margin-top:16px"></div>
+  </section>
+
+  <section id="contact" data-sig>
+    <div class="sec-h"><h2 class="chrome" data-i18n="h_contact"></h2></div>
+    <div class="contact">
+      <div class="cbox"><b>Instagram</b><a href="https://www.instagram.com/Centralpinkl4o" target="_blank" rel="noopener">@Centralpinkl4o</a></div>
+      <div class="cbox"><b data-i18n="c_place_b"></b><span data-i18n="c_place"></span></div>
+      <div class="cbox"><b data-i18n="c_pay_b"></b><span data-i18n="c_pay"></span></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© AntiSweetTooth</span>
+    <span data-i18n="foot"></span>
+  </footer>
+</div>
+</main>
+
+<script>
+(function () {
+  var FORM_ENDPOINT = 'https://formspree.io/f/mbgordod';
+  var IG = 'Centralpinkl4o';
+  var IG_URL = 'https://www.instagram.com/' + IG;
+
+  /* ---------- copy ---------- */
+  var I18N = {
+    th: {
+      nav_styles: 'แบบและราคา', nav_process: 'ขั้นตอน', nav_reviews: 'รีวิว', nav_contact: 'ติดต่อ', nav_book: 'จองคิว',
+      kicker: 'Custom grillz & tooth gem',
+      lead: 'by Pinklao',
+      cta_book: 'จองคิวล่วงหน้า', cta_styles: 'ดูแบบและราคา',
+      f_price: 'ช่วงราคา', f_gem: 'แล้วเสร็จภายในวันนัดหมาย ตามลำดับคิว', f_grillz: 'ระยะเวลาผลิตประมาณ 1 เดือน',
+      f_warranty_b: 'รับประกัน 1 เดือน', f_warranty: 'เงินแท้และสแตนเลสเกรดคุณภาพ แท้ทุกชิ้น', f_appt_b: 'รับเฉพาะนัดหมาย', f_appt: 'พิมพ์ฟันที่สตูดิโอเท่านั้น โดยผู้เชี่ยวชาญ ไม่รับพิมพ์ฟันทางไปรษณีย์',
+      h_styles: 'แบบและราคา', p_styles: 'ทุกชิ้นงานผลิตตามคำสั่งเฉพาะบุคคล ภาพประกอบด้านล่างแสดงลักษณะของแต่ละแบบ ภาพผลงานจริงจะเผยแพร่ในโอกาสต่อไป',
+      note_price: 'ราคาที่แสดงเป็นราคาเริ่มต้น ทางร้านจะแจ้งราคาสุดท้ายผ่านทาง Instagram ก่อนยืนยันการสั่งทำ',
+      pick: 'เลือกแบบนี้', from: 'เริ่มต้น',
+      h_process: 'ขั้นตอนการสั่งทำ', p_process: 'ท่านสามารถจองคิวผ่านเว็บไซต์ได้ โดยไม่ต้องชำระเงินในขั้นตอนการจอง ทางร้านจะติดต่อกลับผ่านทาง Instagram',
+      g1b: 'จองคิวผ่านเว็บไซต์', g1: 'เลือกแบบและวันที่สะดวก',
+      g2b: 'ทางร้านติดต่อกลับ', g2: 'ปรึกษารายละเอียดแบบ ยืนยันราคาและวันนัดหมาย',
+      g3b: 'พิมพ์ฟันที่สตูดิโอ', g3: 'โดยผู้เชี่ยวชาญ รับเฉพาะลูกค้าที่นัดหมายล่วงหน้า ไม่มีการส่งพิมพ์ฟันทางไปรษณีย์',
+      g4b: 'ชำระมัดจำ 50%', g4: 'โอนเงินเพื่อเริ่มกระบวนการผลิต',
+      g5b: 'รับชิ้นงาน', g5: 'ระยะเวลาผลิตประมาณ 1 เดือน',
+      t1b: 'จองคิวผ่านเว็บไซต์', t1: 'เลือกแบบ วัน และเวลา',
+      t2b: 'ทางร้านติดต่อกลับ', t2: 'ยืนยันคิวและชำระมัดจำ 50% โดยการโอนเงิน',
+      t3b: 'เข้ารับบริการที่สตูดิโอ', t3: 'ใช้เวลาประมาณ 1 ชั่วโมง 30 นาทีต่อราย',
+      t4b: 'รับงานทันที', t4: 'แล้วเสร็จภายในการเข้ารับบริการครั้งเดียว',
+      h_reviews: 'รีวิวจากลูกค้า', rev_b: 'ยังไม่มีรีวิว', rev_p: 'รีวิวจากลูกค้าท่านแรกจะแสดงที่นี่',
+      h_book: 'จองคิว', p_book: 'กรุณากรอกข้อมูลด้านล่าง ทางร้านจะติดต่อกลับผ่านทาง Instagram เพื่อสอบถามรายละเอียดและยืนยันวันนัดหมาย',
+      l_service: 'บริการ', l_style: 'แบบ', l_metal: 'วัสดุ', l_gemtype: 'ชนิดอัญมณี',
+      l_name: 'ชื่อ', l_contact: 'Instagram หรือช่องทางติดต่อ', l_date: 'วันที่ต้องการนัดหมาย', l_time: 'ช่วงเวลา',
+      l_notes: 'รายละเอียดเพิ่มเติม', h_notes: 'ท่านสามารถส่งรูปแบบที่ต้องการให้ทางร้านผ่านช่องทางแชทได้ ในขั้นตอนการยืนยันคิว',
+      ph_name: 'ชื่อที่ให้ทางร้านเรียก', ph_contact: '@username', ph_notes: 'ตำแหน่งฟัน ลวดลาย สี และความต้องการอื่นๆ',
+      slot_gem: 'บริการ tooth gem ใช้เวลาประมาณ 1 ชั่วโมง 30 นาทีต่อราย', slot_grillz: 'กรุณาเลือกช่วงเวลาที่สะดวกเข้ารับการพิมพ์ฟัน',
+      submit: 'ส่งคำขอจองคิว',
+      e_name: 'กรุณากรอกชื่อ', e_contact: 'กรุณาระบุ Instagram หรือช่องทางที่ทางร้านติดต่อกลับได้', e_date: 'กรุณาเลือกวันที่', e_time: 'กรุณาเลือกช่วงเวลา',
+      ok_h: 'ทางร้านได้รับคำขอจองของท่านแล้ว', ok_p: 'ทางร้านจะติดต่อกลับตามช่องทางที่ท่านระบุ เพื่อยืนยันรายละเอียดและวันนัดหมาย',
+      fb_h: 'ขั้นตอนสุดท้าย: ส่งข้อความถึงร้านทาง Instagram', fb_p: 'คำขอนี้ยังไม่ถูกส่งถึงทางร้านโดยอัตโนมัติ กรุณาคัดลอกข้อความด้านล่างและส่งให้ทางร้านผ่านทาง Instagram เพื่อยืนยันการจอง',
+      copy: 'คัดลอกข้อความ', copied: 'คัดลอกแล้ว', copyfail: 'กรุณาเลือกข้อความด้านบนและคัดลอกด้วยตนเอง', open_ig: 'เปิด Instagram ของร้าน', again: 'จองคิวเพิ่ม',
+      sum_title: 'คำขอจองคิว AntiSweetTooth', sum_service: 'บริการ', sum_style: 'แบบ', sum_metal: 'วัสดุ', sum_gem: 'ชนิด', sum_name: 'ชื่อ', sum_contact: 'ช่องทางติดต่อ', sum_date: 'วันที่', sum_time: 'เวลา', sum_notes: 'หมายเหตุ', sum_price: 'ราคาเริ่มต้น',
+      c_place_b: 'สถานที่', c_place: 'สตูดิโอ ย่านงามวงวาน จังหวัดนนทบุรี รับเฉพาะนัดหมาย พิมพ์ฟันที่สตูดิโอเท่านั้น ทางร้านจะแจ้งที่อยู่หลังยืนยันคิว', c_pay_b: 'การชำระเงิน', c_pay: 'มัดจำ 50% ชำระโดยการโอนเงิน รับประกันงาน 1 เดือน ใช้เงินแท้และสแตนเลสเกรดคุณภาพ',
+      foot: 'ภาพแบบทั้งหมดเป็นภาพประกอบ ไม่ใช่ภาพผลงานจริง',
+      owner_p: 'คำขอจองที่ส่งผ่านเว็บไซต์ แสดงเฉพาะเจ้าของร้าน', inbox_empty: 'ยังไม่มีคำขอจอง', mark: 'ติดต่อแล้ว', unmark: 'ย้อนกลับ', copy_ig: 'คัดลอกช่องทางติดต่อ'
+    },
+    en: {
+      nav_styles: 'Styles & Pricing', nav_process: 'Process', nav_reviews: 'Reviews', nav_contact: 'Contact', nav_book: 'Book',
+      kicker: 'Custom grillz & tooth gem',
+      lead: 'by Pinklao',
+      cta_book: 'Book an appointment', cta_styles: 'View styles & pricing',
+      f_price: 'Price range', f_gem: 'Completed on the day, by queue', f_grillz: 'Approx. 1 month production',
+      f_warranty_b: '1-month warranty', f_warranty: 'Genuine silver and quality-grade stainless steel throughout', f_appt_b: 'By appointment', f_appt: 'Impressions are taken at the studio only, by a specialist. No postal impression kits.',
+      h_styles: 'Styles & pricing', p_styles: 'Every piece is made to order. The illustrations below show the character of each style; photographs of finished work will follow.',
+      note_price: 'Prices shown are starting prices. The final price is confirmed with you via Instagram before any work begins.',
+      pick: 'Select this style', from: 'from',
+      h_process: 'Ordering process', p_process: 'You may book through this website. No payment is required at the time of booking, and the studio will contact you via Instagram.',
+      g1b: 'Book online', g1: 'Select a style and a preferred date',
+      g2b: 'The studio contacts you', g2: 'Discuss the design, confirm the price and the appointment',
+      g3b: 'Impression at the studio', g3: 'Taken by a specialist, by prior appointment only. Postal impression kits are not offered.',
+      g4b: '50% deposit', g4: 'Paid by bank transfer to begin production',
+      g5b: 'Collection', g5: 'Production takes approximately 1 month',
+      t1b: 'Book online', t1: 'Select a style, date and time',
+      t2b: 'The studio contacts you', t2: 'Confirm the slot and pay a 50% deposit by transfer',
+      t3b: 'Visit the studio', t3: 'Approximately 1 hour 30 minutes per client',
+      t4b: 'Collect on the day', t4: 'Completed within a single visit',
+      h_reviews: 'Client reviews', rev_b: 'No reviews yet', rev_p: 'Reviews from our first clients will appear here.',
+      h_book: 'Book an appointment', p_book: 'Please complete the form below. The studio will contact you via Instagram to confirm the details and your appointment.',
+      l_service: 'Service', l_style: 'Style', l_metal: 'Material', l_gemtype: 'Gem type',
+      l_name: 'Name', l_contact: 'Instagram or other contact', l_date: 'Preferred date', l_time: 'Time slot',
+      l_notes: 'Additional details', h_notes: 'You may send reference images through the chat when the studio confirms your slot.',
+      ph_name: 'Name we should use', ph_contact: '@username', ph_notes: 'Tooth positions, patterns, colours and other requirements',
+      slot_gem: 'A tooth gem session takes approximately 1 hour 30 minutes', slot_grillz: 'Please select a time to attend for your impression',
+      submit: 'Submit booking request',
+      e_name: 'Please enter your name.', e_contact: 'Please provide an Instagram handle or other contact.', e_date: 'Please select a date.', e_time: 'Please select a time slot.',
+      ok_h: 'Your booking request has been received', ok_p: 'The studio will contact you using the details provided to confirm the appointment.',
+      fb_h: 'Final step: message the studio on Instagram', fb_p: 'This request was not delivered to the studio automatically. Please copy the message below and send it to the studio on Instagram to confirm your booking.',
+      copy: 'Copy message', copied: 'Copied', copyfail: 'Please select the text above and copy it manually.', open_ig: 'Open studio Instagram', again: 'Make another booking',
+      sum_title: 'AntiSweetTooth booking request', sum_service: 'Service', sum_style: 'Style', sum_metal: 'Material', sum_gem: 'Gem', sum_name: 'Name', sum_contact: 'Contact', sum_date: 'Date', sum_time: 'Time', sum_notes: 'Notes', sum_price: 'Starting price',
+      c_place_b: 'Location', c_place: 'Studio in Ngam Wong Wan, Nonthaburi. By appointment only, with impressions taken at the studio. The address is provided once your slot is confirmed.', c_pay_b: 'Payment', c_pay: '50% deposit by bank transfer. One-month warranty. Genuine silver and quality-grade stainless steel.',
+      foot: 'All style images are illustrations, not photographs of finished work.',
+      owner_p: 'Booking requests submitted through the site. Visible to the studio owner only.', inbox_empty: 'No requests yet.', mark: 'Mark contacted', unmark: 'Undo', copy_ig: 'Copy contact'
+    }
+  };
+
+  var STYLES = {
+    grillz: [
+      { id: 'single', art: 'single', price: 3000, th: ['ครอบ 1 ซี่', 'หนึ่งซี่ เลือกตำแหน่งฟันหน้าหรือเขี้ยวได้'], en: ['Single cap', 'One tooth, front or canine'] },
+      { id: 'fangs', art: 'fangs', price: 5500, th: ['เขี้ยว 2 ซี่', 'เขี้ยวคู่ ทรงแหลมหรือทรงมน'], en: ['Fangs', 'A pair of canines, pointed or rounded'] },
+      { id: 'four', art: 'four', price: 6500, th: ['ฟันหน้า 4 ซี่', 'แบบคลาสสิก ครอบฟันหน้าสี่ซี่'], en: ['Classic four', 'The four front teeth'] },
+      { id: 'open', art: 'open', price: 8500, th: ['Open face 4 ซี่', 'ผิวหน้าฟันเปิดโล่ง เห็นฟันจริงตรงกลาง'], en: ['Open face, four', 'Cut-out front revealing the natural tooth'] },
+      { id: 'six', art: 'six', price: 10000, th: ['ฟันหน้า 6 ซี่', 'ครอบแถวฟันหน้ากว้างขึ้น'], en: ['Six teeth', 'A wider front row'] },
+      { id: 'full', art: 'full', price: 16000, th: ['เต็มแถว 8 ซี่ ลายเพชร Swarovski', 'ครอบเต็มแถว ตัดลายเหลี่ยมเพชร ประดับ Swarovski'], en: ['Full eight, Swarovski diamond cut', 'Full row, faceted cut set with Swarovski crystal'] }
+    ],
+    gem: [
+      { id: 'crystal', art: 'crystal', price: 4000, th: ['Swarovski crystal 3 ซี่', 'คริสตัล Swarovski จำนวน 3 ซี่ สามารถแนบแบบที่ต้องการได้'], en: ['Swarovski crystal, three teeth', 'Three Swarovski crystals; a reference style may be attached'] },
+      { id: 'goldgem', art: 'goldgem', price: 6500, th: ['Gold gem', 'อัญมณีทองขนาดเล็กติดบนฟัน'], en: ['Gold gem', 'A small gold stud set on the tooth'] },
+      { id: 'diamond', art: 'diamond', price: 8000, th: ['Diamond gem', 'เพชรเม็ดเล็ก เหลี่ยมคมชัด'], en: ['Diamond gem', 'A small diamond with sharp facets'] }
+    ]
+  };
+  var METALS = { th: ['เงินแท้', 'สแตนเลส', 'ยังไม่แน่ใจ ขอคำแนะนำ'], en: ['Sterling silver', 'Stainless steel', 'Not sure, advise me'] };
+  var GEMTYPES = { th: ['คริสตัล', 'เพชร', 'ทอง'], en: ['Crystal', 'Diamond', 'Gold'] };
+  var SLOTS = ['12:00', '14:00', '16:00', '18:00'];
+
+  /* ---------- state ---------- */
+  var lang = 'th', tab = 'grillz', lastSummary = '';
+  function $(id) { return document.getElementById(id); }
+  function t(k) { return (I18N[lang] && I18N[lang][k]) || k; }
+  function money(n) { return '฿' + n.toLocaleString('en-US'); }
+  try { var saved = localStorage.getItem('ast-lang'); if (saved === 'en' || saved === 'th') lang = saved; } catch (e) {}
+
+  /* ---------- illustrations (flat, white background, one family) ---------- */
+  var NAVY = '#0b1230';
+  function defs() {
+    return '<defs>' +
+      '<linearGradient id="gm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".3" stop-color="#d4dbe8"/><stop offset=".5" stop-color="#7e8cab"/><stop offset=".62" stop-color="#eef3fb"/><stop offset="1" stop-color="#a6b5cf"/></linearGradient>' +
+      '<linearGradient id="gt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dfe6f2"/></linearGradient>' +
+      '<linearGradient id="gb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dff0ff"/><stop offset=".5" stop-color="#5aa0ff"/><stop offset="1" stop-color="#2f6bff"/></linearGradient>' +
+      '<linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff2b8"/><stop offset=".5" stop-color="#e2ad3b"/><stop offset="1" stop-color="#a8741a"/></linearGradient>' +
+      '</defs>';
+  }
+  function toothPath(x, y, w, h, pointed) {
+    var r = w * .34;
+    if (pointed) {
+      return 'M' + x + ',' + y + ' L' + (x + w) + ',' + y + ' L' + (x + w * .62) + ',' + (y + h * 1.12) + ' Q' + (x + w / 2) + ',' + (y + h * 1.22) + ' ' + (x + w * .38) + ',' + (y + h * 1.12) + ' Z';
+    }
+    return 'M' + x + ',' + y + ' L' + (x + w) + ',' + y + ' L' + (x + w) + ',' + (y + h - r) + ' Q' + (x + w) + ',' + (y + h) + ' ' + (x + w - r) + ',' + (y + h) + ' L' + (x + r) + ',' + (y + h) + ' Q' + x + ',' + (y + h) + ' ' + x + ',' + (y + h - r) + ' Z';
+  }
+  function row(kind, w) {
+    // 8 teeth, centred. kind decides which teeth are metal.
+    var n = 8, tw = 34, gap = 3, h = 52, total = n * tw + (n - 1) * gap, x0 = (w - total) / 2, out = '';
+    var metal = { single: [3], fangs: [1, 6], four: [2, 3, 4, 5], open: [2, 3, 4, 5], six: [1, 2, 3, 4, 5, 6], full: [0, 1, 2, 3, 4, 5, 6, 7] }[kind] || [];
+    for (var i = 0; i < n; i++) {
+      var x = x0 + i * (tw + gap), c = Math.abs(i - 3.5), y = 30 + c * c * 1.5;
+      var isM = metal.indexOf(i) > -1, pointed = kind === 'fangs' && isM;
+      if (isM) {
+        out += '<path d="' + toothPath(x, y, tw, h, pointed) + '" fill="url(#gm)" stroke="' + NAVY + '" stroke-width="1.6" stroke-linejoin="round"/>';
+        if (kind === 'open') {
+          out += '<path d="' + toothPath(x + 8, y + 10, tw - 16, h - 24, false) + '" fill="#fff" stroke="' + NAVY + '" stroke-width="1.2"/>';
+        } else if (kind === 'full') {
+          out += '<path d="M' + (x + tw / 2) + ',' + (y + 4) + ' L' + (x + tw - 7) + ',' + (y + h / 2) + ' L' + (x + tw / 2) + ',' + (y + h - 6) + ' L' + (x + 7) + ',' + (y + h / 2) + ' Z" fill="#fff" fill-opacity=".55" stroke="' + NAVY + '" stroke-width="1"/>';
+        } else {
+          out += '<path d="M' + (x + 6) + ',' + (y + 6) + ' L' + (x + 6) + ',' + (y + h * .5) + '" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".9"/>';
+        }
+      } else {
+        out += '<path d="' + toothPath(x, y, tw, h, false) + '" fill="url(#gt)" stroke="#b7c1d6" stroke-width="1.3" stroke-linejoin="round"/>';
+      }
+    }
+    return out;
+  }
+  function gemTooth(kind) {
+    var tooth = '<path d="M70,34 L170,34 Q184,34 184,50 L184,118 Q184,136 168,136 L72,136 Q56,136 56,118 L56,50 Q56,34 70,34 Z" fill="url(#gt)" stroke="#b7c1d6" stroke-width="2"/>';
+    var g = '';
+    var cx = 120, cy = 82;
+    var fill = kind === 'goldgem' ? 'url(#gg)' : kind === 'diamond' ? '#ffffff' : 'url(#gb)';
+    var pts = [[cx, cy - 22], [cx + 20, cy - 6], [cx + 14, cy + 20], [cx - 14, cy + 20], [cx - 20, cy - 6]];
+    if (kind === 'goldgem') g = '<circle cx="' + cx + '" cy="' + cy + '" r="14" fill="' + fill + '" stroke="' + NAVY + '" stroke-width="1.6"/><circle cx="' + (cx - 4) + '" cy="' + (cy - 5) + '" r="4" fill="#fff" opacity=".8"/>';
+    else {
+      var p = pts.map(function (a) { return a.join(','); }).join(' ');
+      g = '<polygon points="' + p + '" fill="' + fill + '" stroke="' + NAVY + '" stroke-width="1.8" stroke-linejoin="round"/>' +
+        '<path d="M' + (cx - 20) + ',' + (cy - 6) + ' L' + (cx + 20) + ',' + (cy - 6) + ' M' + cx + ',' + (cy - 22) + ' L' + (cx - 7) + ',' + (cy - 6) + ' L' + (cx - 14) + ',' + (cy + 20) + ' M' + cx + ',' + (cy - 22) + ' L' + (cx + 7) + ',' + (cy - 6) + ' L' + (cx + 14) + ',' + (cy + 20) + '" stroke="' + NAVY + '" stroke-width="1.1" fill="none" opacity=".75"/>';
+    }
+    var star = '<path d="M168,48 l3,9 9,3 -9,3 -3,9 -3,-9 -9,-3 9,-3z" fill="#2f6bff"/>';
+    return tooth + g + star;
+  }
+  function art(kind) {
+    var gem = kind === 'crystal' || kind === 'goldgem' || kind === 'diamond';
+    var body = gem ? gemTooth(kind) : row(kind, 320);
+    return '<svg viewBox="0 0 ' + (gem ? '240 170' : '320 130') + '" role="img" aria-hidden="true">' + defs() + body + '</svg>';
+  }
+
+  function heroArt() {
+    var n = 8, tw = 62, gap = 8, h = 96, total = n * tw + (n - 1) * gap, x0 = (760 - total) / 2, out = defs();
+    out += '<path d="M20,148 H740" stroke="#2f6bff" stroke-width="2" opacity=".6"/>';
+    for (var i = 0; i < n; i++) {
+      var x = x0 + i * (tw + gap), c = Math.abs(i - 3.5), y = 28 + c * c * 3;
+      out += '<path d="' + toothPath(x, y, tw, h, false) + '" fill="url(#gm)" stroke="#e9eefb" stroke-width="1.5" stroke-linejoin="round"/>';
+      out += '<path d="M' + (x + tw / 2) + ',' + (y + 10) + ' L' + (x + tw - 12) + ',' + (y + h / 2) + ' L' + (x + tw / 2) + ',' + (y + h - 12) + ' L' + (x + 12) + ',' + (y + h / 2) + ' Z" fill="#fff" fill-opacity=".5" stroke="#34478f" stroke-width="1"/>';
+    }
+    var sp = [[70, 24, 10], [690, 36, 12], [380, 12, 8], [210, 150, 9], [560, 152, 10], [726, 112, 7], [34, 96, 7]];
+    sp.forEach(function (s) {
+      out += '<path class="spark" d="M' + s[0] + ',' + (s[1] - s[2]) + ' L' + (s[0] + s[2] * .3) + ',' + (s[1] - s[2] * .3) + ' L' + (s[0] + s[2]) + ',' + s[1] + ' L' + (s[0] + s[2] * .3) + ',' + (s[1] + s[2] * .3) + ' L' + s[0] + ',' + (s[1] + s[2]) + ' L' + (s[0] - s[2] * .3) + ',' + (s[1] + s[2] * .3) + ' L' + (s[0] - s[2]) + ',' + s[1] + ' L' + (s[0] - s[2] * .3) + ',' + (s[1] - s[2] * .3) + ' Z" fill="#b9d0ff"/>';
+    });
+    $('heroArt').innerHTML = out;
+  }
+
+  /* ---------- render ---------- */
+  function applyI18n() {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) { el.textContent = t(el.getAttribute('data-i18n')); });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function (el) { el.placeholder = t(el.getAttribute('data-i18n-ph')); });
+    document.querySelectorAll('[data-lang]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang)); });
+    ['G', 'T'].forEach(function (p) {
+      var id = p === 'G' ? 'stepsGrillz' : 'stepsGem', pre = p === 'G' ? 'g' : 't', cnt = p === 'G' ? 5 : 4, h = '';
+      for (var i = 1; i <= cnt; i++) h += '<li><b>' + t(pre + i + 'b') + '</b><span>' + t(pre + i) + '</span></li>';
+      $(id).innerHTML = h;
+    });
+    var tk = ['CUSTOM GRILLZ', 'TOOTH GEM', 'REAL MATERIALS', '1-MONTH WARRANTY', 'BY APPOINTMENT'], s = '';
+    for (var k = 0; k < 2; k++) tk.forEach(function (x) { s += '<span>' + x + '</span><span>✦</span>'; });
+    $('tick').innerHTML = s + s;
+    renderGrid(); fillForm(); updateSlotHint();
+    if (lastSummary) renderResult(lastSummary.ok, true);
+  }
+  function renderGrid() {
+    var h = '';
+    STYLES[tab].forEach(function (s) {
+      h += '<article class="card"><div class="art">' + art(s.art) + '</div><div class="body"><h3>' + s[lang][0] + '</h3><div class="sub">' + s[lang][1] + '</div>' +
+        '<div class="price"><small>' + t('from') + '</small>' + money(s.price) + '</div>' +
+        '<button type="button" class="btn" data-pick="' + s.id + '">' + t('pick') + '</button></div></article>';
+    });
+    $('grid').innerHTML = h;
+    ['grillz', 'gem'].forEach(function (k) { $('tab-' + k).setAttribute('aria-selected', String(k === tab)); });
+  }
+  function svc() { return document.querySelector('input[name=service]:checked').value; }
+  function fillForm() {
+    var cur = $('style').value, curM = $('metal').value, curG = $('gemtype').value, service = svc();
+    $('style').innerHTML = STYLES[service].map(function (s) { return '<option value="' + s.id + '">' + s[lang][0] + ' · ' + money(s.price) + '</option>'; }).join('');
+    if (cur && STYLES[service].some(function (s) { return s.id === cur; })) $('style').value = cur;
+    $('metal').innerHTML = METALS[lang].map(function (m, i) { return '<option value="' + i + '">' + m + '</option>'; }).join('');
+    if (curM) $('metal').value = curM;
+    $('gemtype').innerHTML = GEMTYPES[lang].map(function (m, i) { return '<option value="' + i + '">' + m + '</option>'; }).join('');
+    if (curG) $('gemtype').value = curG;
+    $('metalWrap').hidden = service !== 'grillz';
+    $('teethWrap').hidden = true; // gem type is chosen by style; kept for future use
+    $('slots').innerHTML = SLOTS.map(function (s, i) { return '<input type="radio" name="slot" id="slot' + i + '" value="' + s + '"><label for="slot' + i + '">' + s + '</label>'; }).join('');
+  }
+  function updateSlotHint() { $('slotHint').textContent = svc() === 'gem' ? t('slot_gem') : t('slot_grillz'); }
+  function selectedStyle() { return STYLES[svc()].filter(function (s) { return s.id === $('style').value; })[0]; }
+
+  /* ---------- events ---------- */
+  document.addEventListener('click', function (e) {
+    var l = e.target.closest('[data-lang]');
+    if (l) { lang = l.getAttribute('data-lang'); try { localStorage.setItem('ast-lang', lang); } catch (x) {} applyI18n(); return; }
+    var tb = e.target.closest('[data-tab]');
+    if (tb) { tab = tb.getAttribute('data-tab'); renderGrid(); return; }
+    var p = e.target.closest('[data-pick]');
+    if (p) {
+      var r = document.getElementById(tab === 'gem' ? 'svc-gem' : 'svc-grillz'); r.checked = true; fillForm(); updateSlotHint();
+      $('style').value = p.getAttribute('data-pick');
+      $('book').scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+  document.querySelectorAll('input[name=service]').forEach(function (r) { r.addEventListener('change', function () { fillForm(); updateSlotHint(); }); });
+
+  var d = new Date(); var today = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  $('date').min = today;
+
+  function buildSummary() {
+    var s = selectedStyle(), service = svc(), slot = document.querySelector('input[name=slot]:checked');
+    var L = [t('sum_title'),
+      t('sum_service') + ': ' + (service === 'gem' ? 'Tooth Gem' : 'Grillz'),
+      t('sum_style') + ': ' + s[lang][0] + ' (' + t('sum_price') + ' ' + money(s.price) + ')'];
+    if (service === 'grillz') L.push(t('sum_metal') + ': ' + METALS[lang][+$('metal').value]);
+    L.push(t('sum_name') + ': ' + $('name').value.trim());
+    L.push(t('sum_contact') + ': ' + $('contact').value.trim());
+    L.push(t('sum_date') + ': ' + $('date').value + (slot ? ' ' + slot.value : ''));
+    if ($('notes').value.trim()) L.push(t('sum_notes') + ': ' + $('notes').value.trim());
+    return { text: L.join('\n'), data: {
+      service: service, style: s.id, styleName: s.en[0], price: s.price,
+      metal: service === 'grillz' ? METALS.en[+$('metal').value] : '',
+      name: $('name').value.trim(), contact: $('contact').value.trim(),
+      date: $('date').value, time: slot ? slot.value : '', notes: $('notes').value.trim(), status: 'new', ts: Date.now(), lang: lang
+    } };
+  }
+
+  $('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var err = '';
+    if (!$('name').value.trim()) err = t('e_name');
+    else if (!$('contact').value.trim()) err = t('e_contact');
+    else if (!$('date').value) err = t('e_date');
+    else if (!document.querySelector('input[name=slot]:checked')) err = t('e_time');
+    $('err').textContent = err;
+    if (err) return;
+    var sm = buildSummary(), btn = e.submitter; if (btn) btn.disabled = true;
+    var done = function (ok) { lastSummary = { text: sm.text, ok: ok }; renderResult(ok, false); if (btn) btn.disabled = false; };
+    var payload = Object.assign({}, sm.data, { _subject: 'AntiSweetTooth booking: ' + sm.data.name, message: sm.text, _gotcha: $('website').value });
+    fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+      .then(function (r) { done(r.ok); }, function () { done(false); });
+  });
+
+  function renderResult(ok, keepFocus) {
+    var box = $('result');
+    box.innerHTML = '<div class="done' + (ok ? '' : ' warn') + '"><h3>' + t(ok ? 'ok_h' : 'fb_h') + '</h3><p style="margin:0">' + t(ok ? 'ok_p' : 'fb_p') + '</p>' +
+      '<div class="summary" id="sumText"></div><div class="row"><button type="button" class="btn sm" id="copyBtn">' + t('copy') + '</button>' +
+      '<a class="btn sm ghost" href="' + IG_URL + '" target="_blank" rel="noopener">' + t('open_ig') + '</a>' +
+      '<button type="button" class="btn sm ghost" id="againBtn">' + t('again') + '</button></div><span class="hint" id="copyMsg"></span></div>';
+    $('sumText').textContent = lastSummary.text;
+    $('copyBtn').onclick = function () { copyText(lastSummary.text, $('copyMsg')); };
+    $('againBtn').onclick = function () { lastSummary = null; box.innerHTML = ''; $('form').reset(); fillForm(); $('book').scrollIntoView(); };
+    if (!keepFocus) box.scrollIntoView({ block: 'center' });
+  }
+  function copyText(text, msgEl) {
+    var fail = function () { msgEl.textContent = t('copyfail'); };
+    try { navigator.clipboard.writeText(text).then(function () { msgEl.textContent = t('copied'); }, fail); } catch (x) { fail(); }
+  }
+
+  /* ---------- chrome ornaments: liquid-metal star (silver on black) ---------- */
+  function chromeDefs(id) {
+    var stops = '<stop offset="0" stop-color="#ffffff"/><stop offset=".18" stop-color="#cfd9e8"/><stop offset=".42" stop-color="#3a4558"/><stop offset=".6" stop-color="#06080e"/><stop offset=".82" stop-color="#8fa3bf"/><stop offset="1" stop-color="#ffffff"/>';
+    return '<defs><linearGradient id="' + id + 'a" x1="0" y1="0" x2="1" y2="1">' + stops + '</linearGradient>' +
+      '<linearGradient id="' + id + 'b" x1="0" y1="1" x2="1" y2="0">' + stops + '</linearGradient>' +
+      '<linearGradient id="' + id + 'c" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6edf8"/><stop offset=".3" stop-color="#5d6b82"/><stop offset=".55" stop-color="#04060a"/><stop offset="1" stop-color="#7f90aa"/></linearGradient>' +
+      '<linearGradient id="' + id + 'r" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#5d6b82"/><stop offset="1" stop-color="#e6edf8"/></linearGradient>' +
+      '<radialGradient id="' + id + 'f"><stop offset="0" stop-color="#fff"/><stop offset=".3" stop-color="#dbe7ff" stop-opacity=".75"/><stop offset="1" stop-color="#9ec0ff" stop-opacity="0"/></radialGradient></defs>';
+  }
+  function flare(x, y, r, id) {
+    return '<circle cx="' + x + '" cy="' + y + '" r="' + r * 1.4 + '" fill="url(#' + id + 'f)"/>' +
+      '<path d="M' + x + ',' + (y - r * 2.4) + ' L' + (x + r * .08) + ',' + (y - r * .08) + ' L' + (x + r * 2.4) + ',' + y + ' L' + (x + r * .08) + ',' + (y + r * .08) + ' L' + x + ',' + (y + r * 2.4) + ' L' + (x - r * .08) + ',' + (y + r * .08) + ' L' + (x - r * 2.4) + ',' + y + ' L' + (x - r * .08) + ',' + (y - r * .08) + ' Z" fill="#fff"/>';
+  }
+  function chromeStar(uid) {
+    var id = 'cs' + uid, S = '';
+    S += '<g fill="none"><ellipse cx="205" cy="346" rx="96" ry="84" transform="rotate(-12 205 346)" stroke="url(#' + id + 'r)" stroke-width="2.2"/>' +
+      '<ellipse cx="215" cy="352" rx="150" ry="62" transform="rotate(14 215 352)" stroke="#9fb2cf" stroke-width=".8" opacity=".45"/></g>';
+    // lower-left spear
+    S += '<path d="M240,358 C214,424 158,506 60,596 C102,520 152,432 192,374 Z" fill="url(#' + id + 'c)"/><path d="M240,358 C212,420 156,502 62,594" fill="none" stroke="#e8f0ff" stroke-width="1.2"/>';
+    // lower-right fat blade
+    S += '<path d="M232,356 C270,372 312,394 352,410 C377,420 396,436 399,458 C381,464 350,454 320,443 C282,432 236,423 205,417 C216,396 226,376 232,356 Z" fill="url(#' + id + 'a)"/>' +
+      '<path d="M236,372 C280,392 330,412 392,452" fill="none" stroke="#c9d6ea" stroke-width="1.1" opacity=".8"/>';
+    // left blade
+    S += '<path d="M42,253 C100,262 152,286 205,320 C226,335 236,345 242,354 C202,346 160,326 120,301 C85,280 60,265 42,253 Z" fill="url(#' + id + 'b)"/>' +
+      '<path d="M42,253 C112,268 172,296 232,342 C172,306 102,276 42,253 Z" fill="#fff"/>';
+    // upper-right blade
+    S += '<path d="M230,342 C262,300 302,242 346,192 C370,162 394,139 408,127 C399,158 373,206 341,250 C310,292 270,337 232,362 Z" fill="url(#' + id + 'a)"/>' +
+      '<path d="M238,334 C282,272 334,206 402,131 C342,216 290,292 236,347 Z" fill="#fff"/>' +
+      '<path d="M250,340 C290,290 330,236 372,190" fill="none" stroke="#7fb3ff" stroke-width="3" opacity=".6"/>';
+    // core
+    S += '<ellipse cx="232" cy="352" rx="12" ry="22" transform="rotate(-30 232 352)" fill="url(#' + id + 'c)" stroke="#e8f0ff" stroke-width=".8"/>';
+    // streaks + flares
+    S += '<path d="M98,212 L190,298" stroke="#fff" stroke-width="1.2" opacity=".85"/><path d="M328,330 L342,398" stroke="#fff" stroke-width="1" opacity=".7"/><path d="M300,380 L378,376" stroke="#fff" stroke-width="1" opacity=".6"/>';
+    S += flare(206, 302, 12, id) + flare(338, 396, 10, id);
+    return chromeDefs(id) + S;
+  }
+  function sigilArt() { $('sigil').innerHTML = chromeStar('h'); }
+  function dividerArt(i) {
+    var id = 'cd' + i;
+    var d = '<defs><linearGradient id="' + id + 'g" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#cfd9e8" stop-opacity="0"/><stop offset=".5" stop-color="#ffffff"/><stop offset="1" stop-color="#cfd9e8" stop-opacity="0"/></linearGradient>' +
+      '<radialGradient id="' + id + 'f"><stop offset="0" stop-color="#fff"/><stop offset=".3" stop-color="#dbe7ff" stop-opacity=".75"/><stop offset="1" stop-color="#9ec0ff" stop-opacity="0"/></radialGradient></defs>';
+    var P = '<path d="M20,22 L300,17 L300,27 Z M580,22 L300,17 L300,27 Z" fill="url(#' + id + 'g)"/>' +
+      '<path d="M90,10 Q200,16 300,20.4 L300,22 Q200,19 90,10 Z M510,34 Q400,28 300,23.6 L300,22 Q400,25 510,34 Z" fill="#cfd9e8" opacity=".7"/>' +
+      '<ellipse cx="300" cy="22" rx="46" ry="9" transform="rotate(-8 300 22)" fill="none" stroke="#dfe8f6" stroke-width="1.2"/>';
+    return '<svg class="divider" viewBox="0 0 600 44" preserveAspectRatio="xMidYMid meet" aria-hidden="true">' + d + P + flare(300, 22, 9, id) + '</svg>';
+  }
+  function addDividers() {
+    document.querySelectorAll('section[data-sig]').forEach(function (sec, i) { sec.insertAdjacentHTML('afterbegin', dividerArt(i)); });
+  }
+
+  /* ---------- boot ---------- */
+  heroArt(); sigilArt(); addDividers(); fillForm(); applyI18n();
+})();
+</script>
+
+</body>
+</html>
